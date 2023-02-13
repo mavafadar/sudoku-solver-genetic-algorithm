@@ -12,7 +12,7 @@ This project is a solution to the popular puzzle game - Sudoku, using a genetic 
 ## Requirements
 This project requires `Python 3.x` to run.
 
-### Installation
+## Installation
 No installation is required for this project. Simply download the source code and run it using the usage instructions.
 
 ## Usage
