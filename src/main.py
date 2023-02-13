@@ -1,22 +1,14 @@
-from Sudoku import Sudoku
+from UserInterface import UserInterface
 
-
-def main():
-    sudoku_value = [
-        [5, 3, 0, 0, 7, 0, 0, 0, 0],
-        [6, 0, 0, 1, 9, 5, 0, 0, 0],
-        [0, 9, 8, 0, 0, 0, 0, 6, 0],
-        [8, 0, 0, 0, 6, 0, 0, 0, 3],
-        [4, 0, 0, 8, 0, 3, 0, 0, 1],
-        [7, 0, 0, 0, 2, 0, 0, 0, 6],
-        [0, 6, 0, 0, 0, 0, 2, 8, 0],
-        [0, 0, 0, 4, 1, 9, 0, 0, 5],
-        [0, 0, 0, 0, 8, 0, 0, 7, 9]
-    ]
-    sudoku_solver = Sudoku(sudoku_value)
-    result = sudoku_solver.solve_sudoku()
-    print(result)
+import tkinter as tk
+from tkinter import ttk
 
 
 if __name__ == '__main__':
-    main()
+    root = tk.Tk()
+    s = ttk.Style(root)
+    s.configure('Green.TButton', font=("Helvetica", 16), background='#26a69a')
+    s.configure('Red.TButton', font=("Helvetica", 16), background='#ef5350')
+    s.configure('Yellow.TEntry', font=("Helvetica", 16), background='#fff9c4')
+    app = UserInterface(root)
+    root.mainloop()
