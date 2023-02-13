@@ -3,7 +3,7 @@ from Board import Board
 
 class Population:
 
-    def __init__(self, size_of_population: int, given_board: list(list(int))):
+    def __init__(self, size_of_population: int, given_board: list):
         """
         Initialize a Population object and generates number of randomly filled boards
         and calculates their fitness scores.

@@ -6,7 +6,7 @@ from copy import deepcopy
 
 class CrossOver:
 
-    def tournament_selection(self, candidates: list(Board), selection_rate: float) -> Board:
+    def tournament_selection(self, candidates: list, selection_rate: float) -> Board:
         """
         This function implements tournament selection algorithm to select a candidate from the given list of candidates.
 
@@ -32,7 +32,7 @@ class CrossOver:
         probability = uniform(0, 1)
         return fittest if probability < selection_rate else weakest
     
-    def cross_over(self, parent_one: Board, parent_two: Board, cross_over_rate: float) -> tuple(Board, Board):
+    def cross_over(self, parent_one: Board, parent_two: Board, cross_over_rate: float) -> tuple:
         """
         Perform a cross-over between two parents to generate two children.
         
@@ -70,7 +70,7 @@ class CrossOver:
                 self.__cross_over_rows(child_one.values[row_number], child_two.values[row_number])
         return child_one, child_two
             
-    def __cross_over_rows(self, row_one: list, row_two: list) -> tuple(list, list):
+    def __cross_over_rows(self, row_one: list, row_two: list) -> tuple:
         """
         This function takes in two rows (row_one and row_two) as arguments and performs a crossover operation on these two rows to generate two child rows.
         The crossover operation uses two while loops, where each loop runs until both child_one_row and child_two_row are filled with numbers 1 to 9.
