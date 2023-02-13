@@ -6,7 +6,7 @@ from copy import deepcopy
 
 class CrossOver:
 
-    def tournament_selection(self, candidates, selection_rate):
+    def tournament_selection(self, candidates: list(Board), selection_rate: float) -> Board:
         """
         This function implements tournament selection algorithm to select a candidate from the given list of candidates.
 
@@ -32,7 +32,7 @@ class CrossOver:
         probability = uniform(0, 1)
         return fittest if probability < selection_rate else weakest
     
-    def cross_over(self, parent_one, parent_two, cross_over_rate):
+    def cross_over(self, parent_one: Board, parent_two: Board, cross_over_rate: float) -> tuple(Board, Board):
         """
         Perform a cross-over between two parents to generate two children.
         
@@ -70,7 +70,7 @@ class CrossOver:
                 self.__cross_over_rows(child_one.values[row_number], child_two.values[row_number])
         return child_one, child_two
             
-    def __cross_over_rows(self, row_one, row_two):
+    def __cross_over_rows(self, row_one: list, row_two: list) -> tuple(list, list):
         """
         This function takes in two rows (row_one and row_two) as arguments and performs a crossover operation on these two rows to generate two child rows.
         The crossover operation uses two while loops, where each loop runs until both child_one_row and child_two_row are filled with numbers 1 to 9.
@@ -144,7 +144,7 @@ class CrossOver:
             cycle_number += 1
         return child_one_row, child_two_row
 
-    def __find_unused_number(self, parent_row, remaining_numbers):
+    def __find_unused_number(self, parent_row: list, remaining_numbers: list) -> int:
         """
         Find the first unused number in `parent_row`.
 
@@ -164,7 +164,7 @@ class CrossOver:
             if number in remaining_numbers:
                 return index
 
-    def __find_index(self, parent_row, value):
+    def __find_index(self, parent_row: list, value: int) -> int:
         """
         Find the index of a value in a parent row.
 
