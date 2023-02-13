@@ -30,7 +30,7 @@ class Sudoku:
         # Generate a population of candidate answers
         self.population = Population(number_of_candidates, self.given_board)
         for generation_number in range(number_of_generations):
-            print(f'Generation #{generation_number} is started...')
+            print(f'\nGeneration #{generation_number} is started...')
             # Here we find the best fitness score of current population
             # and fitness score 1 means that we have found the answer so we return it
             best_fitness_score = 0.0
@@ -38,7 +38,7 @@ class Sudoku:
                 if best_fitness_score < candidate.fitness_score:
                     best_fitness_score = candidate.fitness_score
                 if best_fitness_score == 1:
-                    print(f'Solution is found..')
+                    print(f'Solution is found...\n')
                     return candidate
             print(f'Best fitness score now is {best_fitness_score}...')
             # If we pass previous code, means that we did not find the answer
@@ -61,4 +61,4 @@ class Sudoku:
             self.population.candidates = new_generation
             self.population.update_fitnesses()
         
-        print('Unfortunately, no solution found...')
+        print('Unfortunately, no solution found! :)')
