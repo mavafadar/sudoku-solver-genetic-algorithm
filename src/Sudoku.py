@@ -15,7 +15,7 @@ class Sudoku:
         self.population = None
         self.cross_over = CrossOver()
 
-    def solve_sudokue(self):
+    def solve_sudoku(self):
         """
         This function solves the sudoku puzzle using a genetic algorithm.
 
@@ -59,6 +59,6 @@ class Sudoku:
                 new_generation.append(child_two)
             # Finalize new population
             self.population.candidates = new_generation
-            self.population.update_fitnesses()
+            self.population.update_fitness()
         
         print('Unfortunately, no solution found! :)')

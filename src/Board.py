@@ -1,5 +1,6 @@
-from random import uniform, randint, shuffle
+from random import uniform, randint
 from copy import deepcopy
+
 
 class Board:
 
@@ -92,14 +93,14 @@ class Board:
                 # This means this cell has to be filled randomly
                 elif self.given_board[row][column] == 0:
                     this_row[column] = \
-                    helper_board.values[row][column][randint(0, len(helper_board.values[row][column]) - 1)]
-            # This means this row has duplicat numebrs      
+                        helper_board.values[row][column][randint(0, len(helper_board.values[row][column]) - 1)]
+            # This means this row has duplicate numbers
             while len(set(this_row)) != 9:
                 for column in range(9):
                     # We change the numbers those are not given by the question, since we have an acceptable answer
                     if self.given_board[row][column] == 0:
                         this_row[column] = \
-                        helper_board.values[row][column][randint(0, len(helper_board.values[row][column]) - 1)]
+                            helper_board.values[row][column][randint(0, len(helper_board.values[row][column]) - 1)]
             self.values[row] = this_row
 
     def check_row_duplication(self, row: int, value: int) -> bool:
@@ -120,7 +121,7 @@ class Board:
         Check if a `value` is already present in a `column` of the board.
 
         :param column: Check if a `value` is already present in a `column` of the board.
-        :type row: int
+        :type column: int
         :param value: Check if a `value` is already present in a `column` of the board.
         :type value: int
         :return: True if the `value` is already present in the `column`, False otherwise.
@@ -142,7 +143,8 @@ class Board:
         :rtype: bool
         """
         subgrid_row, subgrid_column = row // 3 * 3, column // 3 * 3
-        subgrid_values = [self.given_board[subgrid_row + row][subgrid_column + column] for row in range(3) for column in range(3)]
+        subgrid_values = [self.given_board[subgrid_row + row][subgrid_column + column] for row in range(3) for column in
+                          range(3)]
         return True if value in subgrid_values else False
 
     def __calculate_column_fitness_score(self) -> float:
@@ -175,7 +177,7 @@ class Board:
                     subgrid_count[self.values[subgrid // 3 * 3 + row][subgrid % 3 * 3 + column] - 1] += 1
             subgrid_sum += (1.0 / len(set(subgrid_count))) / 9
         return subgrid_sum
-            
+
     def update_fitness_score(self) -> None:
         """
         This function updates the fitness score of the sudoku board.
@@ -226,9 +228,9 @@ class Board:
         :type mutation_rate: float
         :return: None
         """
-        probablity = uniform(0, 1)
+        probability = uniform(0, 1)
         was_it_successful = False
-        if probablity < mutation_rate:
+        if probability < mutation_rate:
             # Generate random numbers till a mutation happens
             while not was_it_successful:
                 selected_row, from_column, to_column = randint(0, 8), randint(0, 8), randint(0, 8)
@@ -239,5 +241,5 @@ class Board:
                     # This if checks after mutation, whether duplication will be caused
                     if self.__check_duplication_for_mutation(selected_row, from_column, to_column):
                         self.values[selected_row][to_column], self.values[selected_row][from_column] = \
-                        self.values[selected_row][from_column], self.values[selected_row][to_column]
+                            self.values[selected_row][from_column], self.values[selected_row][to_column]
                         was_it_successful = True

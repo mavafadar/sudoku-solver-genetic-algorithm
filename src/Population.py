@@ -19,7 +19,7 @@ class Population:
         self.size_of_population = size_of_population
         self.candidates = list()
 
-        print(f'Start generatinig population with size {self.size_of_population}. (This may take a while, please be patient)')
+        print(f'Start generating population with size {self.size_of_population}. (This may take a while, please be patient)')
         percentage = 1
         for counter in range(self.size_of_population):
             if counter == percentage * self.size_of_population // 10:
@@ -28,10 +28,10 @@ class Population:
             this_candidate = Board(given_board)
             this_candidate.fill_board()
             self.candidates.append(this_candidate)
-        self.update_fitnesses()
+        self.update_fitness()
         print(f'{self.size_of_population} boards were generated successfully. :)')
 
-    def update_fitnesses(self) -> None:
+    def update_fitness(self) -> None:
         """
         Update fitness scores for all candidates in the population.
 

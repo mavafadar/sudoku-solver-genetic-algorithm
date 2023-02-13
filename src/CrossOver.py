@@ -6,7 +6,8 @@ from copy import deepcopy
 
 class CrossOver:
 
-    def tournament_selection(self, candidates: list, selection_rate: float) -> Board:
+    @staticmethod
+    def tournament_selection(candidates: list, selection_rate: float) -> Board:
         """
         This function implements tournament selection algorithm to select a candidate from the given list of candidates.
 
